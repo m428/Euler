@@ -1,5 +1,17 @@
 // Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
 
+function firstTenNums(sum) { // determine first ten digits of sum
+  var firstTen = [];
+  for (i = 0; i < 11; i++) {
+    if (i == 1) { // account for decimal from scientific notation
+    }
+    else {
+      firstTen.push(sum[i]);
+    }
+  }
+  return firstTen; // return an array containing the first ten digits of the sum
+}
+
 var arrayOfNums = [
   37107287533902102798797998220837590246510135740250,
   46376937677490009712648124896970078050417018260538,
@@ -101,20 +113,22 @@ var arrayOfNums = [
   72107838435069186155435662884062257473692284509516,
   20849603980134001723930671666823555245252804609722,
   53503534226472524250874054075591789781264330331690,
-]
+];
 
-function bruteForce() {
-  var sum = "0";
-  var arrayOfStrings = arrayOfNums.toString(); // issues converting array of numbers to array of strings
-  // console.log(arrayOfStrings + " these are the strings ]");
-  // console.log(arrayOfNums);
+function findSum() {
+  var sum = 0;
+  var arrayOfStrings = [];
+  var length = arrayOfNums.length;
 
-  for (i = 0; i < arrayOfStrings.length; i++) {
-    sum = +sum + +arrayOfStrings[i];
-    sum.toString(); // convert large number back into a string for next round of addition
+  for (i = 0; i < length; i++) {   // encode each 50 digit number as a string to add large integers
+    arrayOfStrings.push(arrayOfNums[i].toString())
   }
-  console.log(sum);
-}
-// add step to determine first ten digits of sum
 
-bruteForce();
+  for (i = 0; i < length; i++) {   // add string of each 50 digit number to overall sum
+    sum = +sum + +arrayOfStrings[i];
+    sum = sum.toString(); // convert large integer back to string for next round of addition
+  }
+  return firstTenNums(sum);
+}
+
+findSum();
