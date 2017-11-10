@@ -20,7 +20,7 @@ function findSum(num, pow) {
 findSum(2, 5);
 
 
-// Refactored 
+// Refactored
 function findSum(num, pow) {
 
   var sum = 0;
@@ -35,4 +35,18 @@ function findSum(num, pow) {
   return sum;
 };
 
-findSum(2, 5);
+// Refectored again!
+function findSum(num, pow) {
+
+  var sum = 0;
+  Math.pow(num, pow).toString().split('').forEach(addDigits);
+
+  function addDigits(item) { // takes in a string digit from array
+  item = parseInt(item); // convert each string digit into a number
+  sum = sum + item // add each number
+  }
+
+  return sum;
+}
+
+findSum(2, 4);
