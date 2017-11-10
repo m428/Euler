@@ -18,3 +18,21 @@ function findSum(num, pow) {
 };
 
 findSum(2, 5);
+
+
+// Refactored 
+function findSum(num, pow) {
+
+  var sum = 0;
+  var digits = Math.pow(num, pow).toString().split(''); // get an array individual digits digits = ['3', '2']
+
+  digits.forEach(addDigits);
+
+  function addDigits(item) {
+  item = parseInt(item); // convert each string digit into a number
+  sum = sum + item // add each number
+  };
+  return sum;
+};
+
+findSum(2, 5);
