@@ -2,66 +2,19 @@
 // What is the sum of the digits of the number 2^1000?
 
 function findSum(num, pow) {
-  var power = Math.pow(num, pow);
-  console.log(power);
-  var string = power.toString();
-  console.log(string)
-  var digits = string.split();
-console.log(digits)
-  var numbers = parseInt(digits);
-  console.log(numbers)
-};
 
-
-
-function findSum(num, pow) {
-  var power = Math.pow(num, pow);
-  console.log(power);
-  var string = power.toString();
-  console.log(string);
-  var digits = string.split('');
-console.log(digits);
-// var numbers = parseInt(digits);
-// console.log(numbers)
- var numbers = digits.forEach(addDigits);
-
-console.log(numbers);
-
- function addDigits(item) {
-   var number = Number(item);
-   var sum = sum + number
-   console.log(sum);
- }
-}
-
-findSum(2, 5);
-
-
-// 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
-// What is the sum of the digits of the number 2^1000?
-
-
-function findSum(num, pow) {
   var sum = 0;
-  var power = Math.pow(num, pow);
-  console.log(power);
-  var string = power.toString();
-  console.log(string);
-  var digits = string.split('');
-console.log(digits);
-// // var numbers = parseInt(digits);
-// // console.log(numbers)
-var numbers = digits.forEach(addDigits);
+  var power = Math.pow(num, pow); // power = 32
+  var string = power.toString(); // string = '32'
+  var digits = string.split(''); // digits = ['3', '2']
 
-console.log(numbers);
+  digits.forEach(addDigits);
 
-function addDigits(item) {
-  console.log(item + ' this is an item');
-  item = parseInt(item);
-  console.log(item + 2);
-  sum = sum + item
-  console.log(sum + " = sum");
-}
-}
+  function addDigits(item) {
+  item = parseInt(item); // convert each string digit into a number
+  sum = sum + item // add each number
+  };
+  return sum;
+};
 
 findSum(2, 5);
