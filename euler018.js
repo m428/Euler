@@ -55,15 +55,20 @@ for (var row in triangle) {
     if (topRow.length == 1) {
       reference = topRow[0];
       if (botRow[0] > botRow[1]) {
-        maxTotal = topRow[0] + botRow[0];
-        reference = botRow[topRow.indexOf(reference)];
-        // reference = botRow[0];
+        maxTotal = reference + botRow[0];
+        reference = botRow[topRow.indexOf(reference)]; // set reference to largest in bottom row
       } else {
-        maxTotal = topRow[0] + botRow[1];
-        // reference = botRow[1];
-        reference = botRow[topRow.indexOf(reference + 1 )];
+        maxTotal = reference + botRow[1];
+        reference = botRow[topRow.indexOf(reference + 1 )]; // set reference to largest in bottom row
       }
     }
-    else if {
+    // set variables here?
+    else if (botRow[topRow.indexOf(reference)] > botRow[topRow.indexOf(reference + 1)]) { // if left > right
+      maxTotal = maxTotal + botRow[topRow.indexOf(reference)];
+      reference = botRow[topRow.indexOf(reference)];
+    }
+    else if (botRow[topRow.indexOf(reference + 1)] > botRow[topRow.indexOf(reference + )]) { // if right > left
+      maxTotal = maxTotal + botRow[topRow.indexOf(reference + 1)];
+      reference = botRow[topRow.indexOf(reference + 1)];
     }
   }
