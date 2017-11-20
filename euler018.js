@@ -36,6 +36,8 @@ const triangle = {
   4: [8, 5, 9, 3]
 }
 
+function maxPath(triangle) {
+
 let maxTotal = 0;
 let reference = 0;
 let left = 0;
@@ -45,30 +47,67 @@ let botRow = [];
 
 for (var row in triangle) {
     if (triangle.hasOwnProperty(row)) {
+      console.log(row + " row")
+      if (triangle[Number(row) + 1] === undefined) {
+        console.log(" end")
+        return maxTotal;
+      }
+      else {
       topRow = triangle[row];
-      botRow = triangle[row + 1];
+      botRow = triangle[Number(row) + 1];
+      console.log(botRow + " next botRow")
+      console.log(topRow + " next topRow")
+      // console.log(topRow)
       findMaxTotal(topRow, botRow);
+      }
     }
   }
 
   function findMaxTotal(topRow, botRow) {
+    console.log("hit")
     if (topRow.length == 1) {
-      reference = topRow[0];
+      reference = topRow[0]; // set reference to first number
+      console.log(reference + " reference");
+      console.log(botRow + " bottom Row")
       if (botRow[0] > botRow[1]) {
         maxTotal = reference + botRow[0];
+        console.log(maxTotal + " maxTotal")
         reference = botRow[topRow.indexOf(reference)]; // set reference to largest in bottom row
+        console.log(reference + "new reference")
+
       } else {
         maxTotal = reference + botRow[1];
         reference = botRow[topRow.indexOf(reference + 1 )]; // set reference to largest in bottom row
+        console.log(reference + "new reference")
       }
+
     }
-    // set variables here?
-    else if (botRow[topRow.indexOf(reference)] > botRow[topRow.indexOf(reference + 1)]) { // if left > right
-      maxTotal = maxTotal + botRow[topRow.indexOf(reference)];
-      reference = botRow[topRow.indexOf(reference)];
-    }
-    else if (botRow[topRow.indexOf(reference + 1)] > botRow[topRow.indexOf(reference + )]) { // if right > left
-      maxTotal = maxTotal + botRow[topRow.indexOf(reference + 1)];
-      reference = botRow[topRow.indexOf(reference + 1)];
+    else {
+
+      index = topRow.indexOf(reference)
+
+      left = botRow[index];
+      console.log(left + " left")
+
+      right = botRow[index + 1];
+      console.log(reference + 1)
+      console.log(topRow[1])
+
+      console.log(right + " right")
+
+
+      if (left > right) { // if left > right
+      maxTotal = maxTotal + left;
+      console.log(maxTotal + " maxTotal")
+      reference = left;
+      }
+      else { // if right > left
+        maxTotal = maxTotal + right;
+        console.log(maxTotal + " maxTotal")
+        reference = right;
+      }    
     }
   }
+}
+
+maxPath(triangle);
