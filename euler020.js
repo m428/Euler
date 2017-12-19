@@ -4,3 +4,60 @@
 // and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 //
 // Find the sum of the digits in the number 100!
+
+function factorialSum(num) {
+  let sum = 1;
+  let finalSum = 0;
+
+  for (i = 1; i < num; i++) {
+    sum = sum * (i + 1);
+  }
+
+  sum = sum.toString().split('')
+  sum.forEach(toNum)
+
+  function toNum(value) {
+  newVal = Number(value);
+  finalSum = finalSum + newVal;
+  }
+  return finalSum;
+}
+
+
+factorialSum(10);
+
+
+
+//
+// function factorialSum(num) {
+//   let sum = 1;
+//     let finalSum = 0;
+//
+//
+//   for (i = 1; i < num; i++) {
+//     sum = sum * (i + 1);
+//     console.log(sum + 'this is the current sum')
+//   }
+//   console.log(sum);
+//   // console.log(sum.toString().split(''));
+//   // sum.forEach(toNum)
+//   sum = sum.toString().split('')
+//   console.log(sum + 'this sum is our final string')
+//     sum.forEach(toNum)
+//
+//
+//
+//   function toNum(value) {
+//   console.log(finalSum)
+//   // console.log(value);
+//   newVal = Number(value);
+//   // console.log(newVal + " this is newVal")
+//   console.log(finalSum + " finalSum")
+//   finalSum = finalSum + newVal;
+//   // console.log(finalSum)
+// }
+//
+// }
+//
+//
+// factorialSum(11);
